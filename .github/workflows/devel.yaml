@@ -39,11 +39,14 @@ jobs:
         AWS_SECRET_ACCESS_KEY:    ${{ secrets.TF_AWS_SECRET_KEY}}
 
     - name: Terraform init
+      working-directory: ./terraform/environments/devel
       run: terraform init
 
     - name: Terraform plan
+      working-directory: ./terraform/environments/devel
       run: terraform plan
 
     - name: Terraform apply
+      working-directory: ./terraform/environments/devel
       run: terraform apply -auto-approve
       
