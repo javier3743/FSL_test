@@ -23,7 +23,7 @@ jobs:
       run: npm run lint
 
     - name: Run formatter check
-      run: npm run prettier
+      run: npx prettier --check "./src/"
 
     - name: Run tests
       run: CI=true npm test
