@@ -3,6 +3,7 @@ name: Development
 on:
   pull_request:
     branches: devel
+  workflow_dispatch:
 
 jobs:
   build:
