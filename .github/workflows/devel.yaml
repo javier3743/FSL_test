@@ -44,7 +44,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: ./terraform/environments/devel
+        working-directory: terraform/environments/devel
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_KEY }}
