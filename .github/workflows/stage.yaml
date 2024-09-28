@@ -1,9 +1,8 @@
 name: Staging
 
 on:
-  pull_request:
+  push:
     branches: stage
-  workflow_dispatch:
 
 jobs:
   build:
@@ -42,33 +41,33 @@ jobs:
         path: build/
         retention-days: 1
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    defaults:
-      run:
-        working-directory: terraform/environments/stage
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_KEY }}
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   defaults:
+  #     run:
+  #       working-directory: terraform/environments/stage
+  #   env:
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_KEY }}
 
-    steps:
-    - uses: actions/checkout@v4
+  #   steps:
+  #   - uses: actions/checkout@v4
 
-    - name: Download build artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: build
-        path: ./build
+  #   - name: Download build artifact
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: build
+  #       path: ./build
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3.1.2
+  #   - name: Setup Terraform
+  #     uses: hashicorp/setup-terraform@v3.1.2
 
-    - name: Terraform init
-      run: terraform init
+  #   - name: Terraform init
+  #     run: terraform init
 
-    - name: Terraform plan
-      run: terraform plan
+  #   - name: Terraform plan
+  #     run: terraform plan
 
-    - name: Terraform apply
-      run: terraform apply -auto-approve
+  #   - name: Terraform apply
+  #     run: terraform apply -auto-approve
