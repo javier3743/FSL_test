@@ -39,6 +39,7 @@ resource "aws_s3_bucket_policy" "app_bucket" {
       },
     ]
   })
+  depends_on = [ aws_s3_bucket_public_access_block.app_bucket ]
 }
 
 resource "aws_s3_object" "build_files" {
