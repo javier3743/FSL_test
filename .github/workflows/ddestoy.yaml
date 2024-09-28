@@ -1,0 +1,20 @@
+name: Destroy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform/environments/stage
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_KEY }}
+      
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Destroy
+      run: terraform destroy --auto-approve
