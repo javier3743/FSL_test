@@ -50,11 +50,12 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_KEY }}
 
     steps:
+    - uses: actions/checkout@v4
+    
     - name: Download build artifact
       uses: actions/download-artifact@v4
       with:
         name: build
-
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3.1.2
