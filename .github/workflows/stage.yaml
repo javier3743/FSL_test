@@ -3,6 +3,7 @@ name: Staging
 on:
   pull_request:
     branches: stage
+  workflow_dispatch:
 
 jobs:
   build:
@@ -53,11 +54,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Download build artifact
       uses: actions/download-artifact@v4
       with:
         name: build
+        path: ./build
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3.1.2
