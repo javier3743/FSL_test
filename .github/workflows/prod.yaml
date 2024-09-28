@@ -61,17 +61,6 @@ jobs:
       with:
         name: build
         path: ./build
-    
-    - name: print screen
-      run: ls -al ../../..
-    - name: print screen 2
-      run: ls -al ../../
-
-    - name: print screen 3
-      run: ls -al ../
-
-    - name: print screen 4
-      run: ls -al ./
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3.1.2
