@@ -60,6 +60,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build
+        path: ./build
     
     - name: print screen
       run: ls -al ../../..
