@@ -1,0 +1,16 @@
+name: 'Check Stage Prod Flow'
+
+on:
+  pull_request:
+    branches:
+      - prod
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch
+        if: github.base_ref == 'stage' && github.head_ref != 'prod'
+        run: |
+          echo "ERROR: You can only merge to prod from stage."
+          exit 1
