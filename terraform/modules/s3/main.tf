@@ -49,18 +49,4 @@ resource "aws_s3_object" "build_files" {
   key    = each.value
   source = "./build/${each.value}"
   etag   = filemd5("./build/${each.value}")
-
-  #content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
 }
-
-# locals {
-#   mime_types = {
-#     ".html" = "text/html"
-#     ".css"  = "text/css"
-#     ".js"   = "application/javascript"
-#     ".png"  = "image/png"
-#     ".jpg"  = "image/jpeg"
-#     ".json" = "application/json"
-#     ".txt"  = "text/plain"
-#   }
-# }
