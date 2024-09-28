@@ -19,7 +19,7 @@ const Octet = (props) => {
             change = true;
             setIsValid(false);
             props.setValid(false);
-            setMessage("incorrect value")
+            setMessage("incorrect value");
           } else if (e.target.value === "" || isNaN(e.target.value)) {
             change = false;
             //stay the same
