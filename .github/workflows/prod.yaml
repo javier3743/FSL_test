@@ -55,8 +55,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: print screen
-      run: ls -la
 
     - name: Download build artifact
       uses: actions/download-artifact@v4
